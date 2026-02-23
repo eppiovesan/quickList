@@ -1,0 +1,32 @@
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin-top: 30px;
+    width: 30%;
+}
+
+
+.textDecoration{
+    text-decoration: line-through;
+}
+.btnSemFormatacao{
+    all:unset
+}
+.btnExluir{
+    background-image: url(assets/ic_remove.svg);
+    background-repeat: no-repeat;
+    background-position: right; 
+    width: 32px;
+    height: 32px;
+    alignment-baseline: center;
+    vertical-align: middle;
+}
+.ulExibe{
+    display: block;
+}
+
+il{
+    margin: 40px    
+}
+
