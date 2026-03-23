@@ -1,8 +1,108 @@
 
+/*
+background
+    - background-primary #F4F5FB
+    - background-secondary #FFFFFF
+
+color
+    - color-brand #CA3884
+    - color-brand-hover #A52C6B
+    - color-danger #C93847
+
+content
+    - content-primary #080B12
+    - content-secondary #374151
+    - content-tertiary #9CA3AF
+    - always-white #FFFFFF
+
+border
+    - border-primary #D1D5DB
+    - border-hover #B9C2D0
+
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+:root{ /*estilização geral*/
+    
+    font-family: 'Inter', sans-serif;
+    font-optical-sizing: auto;
+}
+
+
+body{
+    background-color: #F4F5FB;
+}
+
+
+#appName{
+    color: #374151;
+    margin-left: 6px;
+    font-size: 28.67px;
+    font-weight: bold;
+    height: 40px;
+}
+#title{
+    display: flex;
+    margin: 25px 605px;
+    padding: 12px;
+    
+}
+
+#btnVoltar{
+    margin-left: 369px;
+    color: #CA3884;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: medium;
+}
+
+h1{
+    color: #080B12;
+    font-size: 24px;
+    height: 32px;
+    font-weight: bold;
+    margin-left: 369px;
+    margin-top: 16px;
+    margin-bottom: 44px;
+}
+
+#inputDescriptionItem{
+  height: 44px; 
+  width: 450px;
+  margin-left: 369px;
+  border: solid 2px;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  border-color: #D1D5DB;
+  color: #9CA3AF;
+  padding-left: 18px;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: 'Inter';
+}
+
+#btnAdicionar{
+    background-color: #CA3884;
+    border: none;
+    color: #FFFFFF;
+    border-radius: 12px;
+    padding: 12px 24px;
+    height: 44px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    margin-left: 16px;
+}
+
+
 ul{
     list-style-type: none;
     padding: 0;
     margin-top: 30px;
+    margin-left: 359px;
     width: 30%;
 }
 
@@ -19,14 +119,75 @@ ul{
     background-position: right; 
     width: 32px;
     height: 32px;
-    alignment-baseline: center;
+
     vertical-align: middle;
+    
 }
 .ulExibe{
     display: block;
 }
+.cbItem{
+    width: 16px;
+    height: 16px;
+    border-radius: 6px;
+    border-color: #D1D5DB;
+    margin: 12px 16.5px;
+}
+.lblItem{
+    color: #374151 ;
+    flex: 1;
+}
 
-il{
-    margin: 40px    
+#btnFecharAlert{
+    background-image: url(assets/ic_delete.png);
+    background-repeat: no-repeat;
+    background-position: right; 
+    width: 20px;
+    height: 20px;   
+    flex: 1;
+}
+
+#btnAlert{
+    background-image: url(assets/ic_information.png);
+    background-repeat: no-repeat;
+    background-position: left; 
+    width: 20px;
+    height: 20px;   
+    margin-right: 8px;
+}
+
+#txtAlert{
+    color: #FFFFFF;
+    flex: 1;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+
+}
+
+
+.alert{
+    background-color: #C93847 ;
+    width: 617px ;
+    margin-left: 369px;
+    margin-top: 36px;
+    border-radius: 12px;
+    display: flex;
+    align-items: left;
+    padding: 12px;
+    visibility: hidden;
+}
+
+
+
+li{
+    margin: 12px;   
+    background-color: #FFFFFF;
+    padding: 12px;
+    border-radius: 12px;
+    width: 610px;
+    display: flex;
+    align-items: center;
+
 }
 

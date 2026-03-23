@@ -18,7 +18,9 @@ const btnExcluir = document.querySelector(".btnExluir")
 const btnVoltar = document.querySelector("#btnVoltar")
 const btnAdicionarItem = document.querySelector("#btnAdicionar")
 const inputDescriptionItem = document.querySelector("#inputDescriptionItem")
-
+const alert = document.querySelector(".alert")
+const txtAlert = document.querySelector("#txtAlert")
+const btnFecharAlert = document.querySelector("#btnFecharAlert")
 
 //função que inicializa os itens da lista
 function initialization()
@@ -76,16 +78,33 @@ inputDescriptionItem.addEventListener("change", (event) => {
 
 btnAdicionarItem.addEventListener("click", (event)=>{
     let cont = Number(ul.children.length + 1)
+    let inputValidation
+
     event.preventDefault()
 
-    let newItem = {id: cont, name: inputDescriptionItem.value, checked: false }
-    // adiciona o novo item à lista
-    ul.append(createItem (newItem))
-    
-    //limpando o texto do input
-    inputDescriptionItem.value = ''
-})
+    inputValidation = verificaInputValido(inputDescriptionItem.value)    
+    let inputIsvalid = inputValidation[0]  
+    let validInputMessage = inputValidation[1]
 
+    try{ 
+        if (!inputIsvalid){
+            throw Error(validInputMessage)
+
+        }
+        else{    
+            let newItem = {id: cont, name: inputDescriptionItem.value, checked: false }
+            // adiciona o novo item à lista
+            ul.append(createItem (newItem))
+            
+            //limpando o texto do input
+            inputDescriptionItem.value = ''
+        }
+    }
+    catch (Error){
+        alertDisplay(validInputMessage)
+        inputDescriptionItem.value = ''
+    }
+})
 
 // capturando alterações na lista
 ul.addEventListener("change", (event) => {
@@ -98,8 +117,6 @@ ul.addEventListener("change", (event) => {
         //incluindo ou removendo o riscado do texto
         lblItem.classList.toggle("textDecoration")
     }
-    
-
 })
 
 // capturando cliques na lista
@@ -113,7 +130,7 @@ ul.addEventListener("click", (event)=>{
 
         //removendo o item
         btExcluir.remove()
-        alert("O item foi removido da lista")
+        alertDisplay("O item foi removido da lista")
     }
 })
 
@@ -124,3 +141,43 @@ btnVoltar.addEventListener("click", (event) => {
     initialization()
 })
 
+// função que verifica se o valor inserido no input é válido
+function verificaInputValido(textoInput){
+    let isValid = true
+    let message = ""
+
+    //verifica se o texto está vazio
+    if (textoInput == ""){
+        message = "Descrição não informada"
+        isValid = false
+    } 
+    // verifica se o valor já existe na lista
+    else if (textoInput != ""){
+        for (let i = 0; i < ul.children.length; i++){
+           // console.log(`indice: ${i} valor do indice: ${ul.children[i].textContent}`)
+            if (textoInput == ul.children[i].textContent){
+                message = "Item já inserido"
+                isValid = false 
+                break;
+            }
+        } 
+    }
+    // retorna se o input e válido e a mensagem
+    return [isValid, message]
+
+}
+function alertDisplay(message){
+    alert.style.visibility = "visible"
+    txtAlert.textContent = message
+
+    //exibe o alerta por 3 segundos
+    setTimeout(() => {
+        alert.style.visibility = "hidden" // esconde o alerta
+        txtAlert.textContent = "" // limpa o texto do alerta
+    }, 3000)
+}
+btnFecharAlert.addEventListener("click", (event) => {
+    event.preventDefault()
+    alert.style.visibility = "hidden"
+    txtAlert.textContent = ""
+})
